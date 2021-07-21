@@ -15,6 +15,14 @@ export default {
   components:{
     Header,
     Footer
+  },
+  mounted(){
+    this.getCatogoryList()
+  },
+  methods:{
+    getCatogoryList(){
+      this.$store.dispatch('getCatogoryList')
+    }
   }
 }
 </script>

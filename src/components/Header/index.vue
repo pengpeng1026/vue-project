@@ -73,15 +73,19 @@ export default {
         params:{keyworld:this.keyworld},
         query:{keyworld2:this.keyworld}}) */
       /* 指定params参数时可不可以用path和params配置的组合?（对象写法） */
-      this.$router.push({
+      const location = {
         name:'search',
         // path:'/search',
         // 如果指定了params参数，但是传递的时候却没有传，可以在path路径后面写一个问号？
         // params:{keyworld:this.keyworld},
         // 如果指定了params参数，并且是和name一起使用，且指定了参数可以不传，此时如果参数是一个空串，路径也会出问题
-        params:{keyworld:'' || undefined},
-        query:{keyworld2:this.keyworld}
-        })
+        params:{keyworld:this.keyworld || undefined},
+        // query:{keyworld2:this.keyworld}
+        }
+      if(this.$route.query){
+        location.query = this.$route.query
+      }
+      this.$router.push(location)
 
     }
   }
